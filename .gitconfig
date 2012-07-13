@@ -1,0 +1,23 @@
+[user]
+  name = Mike Griffin
+  email = griffinm@gmail.com
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = auto
+  pager = true
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[alias]
+  ba = branch -a
+  st = status
+  ci = commit
+  co = checkout
+  lg = log --graph --pretty=oneline --abbrev-commit --decorate
+  lp = log -p
+  sh = show --stat
+  s = status -s
