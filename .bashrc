@@ -168,6 +168,7 @@ alias lo='logout'
 alias nagios_check='sudo nagios3 -v /etc/nagios3/nagios.cfg'
 alias nagios_restart='sudo /etc/init.d/nagios3 reload'
 alias homeconfig='git --git-dir=$HOME/.homeconfig.git/ --work-tree=$HOME'
+alias wmt='ssh -l mikegriffin watchmetrain.net'
 
 # ----------------------------------------------------------------------
 # BASH COMPLETION
@@ -201,7 +202,8 @@ _expand() {
 # ----------------------------------------------------------------------
 
 # we always pass these to ls(1)
-LS_COMMON="-hF --color"
+#LS_COMMON="-hF --color"
+LS_COMMON="-hF"
 
 # if the dircolors utility is available, set that up to
 dircolors="$(type -P gdircolors dircolors | head -1)"
