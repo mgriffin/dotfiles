@@ -5,7 +5,7 @@ function prompt_char {
 }
 
 PROMPT='
-%{$fg[blue]%}%n%{$reset_color%} on %{$fg[yellow]%}%m%{$reset_color%} in %{$fg[green]%}%~%b%{$reset_color%} $(git_time_since_commit)$(check_git_prompt_info)
+%{$fg[blue]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%} (%{$fg[green]%}%~%b%){$reset_color%} $(git_time_since_commit)$(check_git_prompt_info)
 ${vcs_info_msg_0_}$(prompt_char) '
 
 

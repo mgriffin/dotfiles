@@ -38,3 +38,11 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/texbin:/usr/X11/bi
 
 alias l="ls -l"
 alias ll="ls -al"
+alias  sz="source ~/.zshrc"
+
+export LANG=en_IE.utf-8
+export LC_ALL=en_IE.utf-8
+
+export VISUAL=vim
+export EDITOR=vim
+export PAGER="less -E"
