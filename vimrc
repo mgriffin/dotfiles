@@ -7,7 +7,7 @@ set noswapfile
 set t_Co=256 " needed to tell the colorscheme that we can use the good colours
 set hidden " to allow buffers to be hidden with pending changes
 
-colorscheme mustang
+colorscheme solarized
 
 set pastetoggle=<F10> "  toggle between paste and normal: for 'safer' pasting from keyboard
 " Match and search
