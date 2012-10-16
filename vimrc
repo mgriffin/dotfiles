@@ -6,6 +6,7 @@ set nobackup
 set noswapfile
 set t_Co=256 " needed to tell the colorscheme that we can use the good colours
 set hidden " to allow buffers to be hidden with pending changes
+set encoding=utf-8
 
 colorscheme solarized
 
@@ -77,4 +78,5 @@ map <silent> <LocalLeader>2h :runtime! syntax/2html.vim<CR>
 
 
 
+let g:Powerline_symbols = 'fancy'
 filetype indent plugin on     " required! 
