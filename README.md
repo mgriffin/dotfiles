@@ -8,7 +8,7 @@ them to be.
 Just run the following commands from the command line
 
 ```terminal
-git clone git://github.com/mgriffin/dotfiles ~/.dotfiles
+git clone git@github.com:mgriffin/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 rake install
 ```
