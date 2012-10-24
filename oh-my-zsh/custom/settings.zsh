@@ -6,3 +6,5 @@ export VISUAL=vim
 export EDITOR=vim
 export PAGER="less -E"
 
+export HISTSIZE=2000
+export SAVEHIST=2000
