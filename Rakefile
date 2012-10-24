@@ -8,6 +8,9 @@ task :install do
   replace_all = false
   files = Dir['*'] - %w[Rakefile README.md oh-my-zsh]
   files << "oh-my-zsh/themes/mike.zsh-theme"
+  files << "oh-my-zsh/custom/aliases.zsh"
+  files << "oh-my-zsh/custom/settings.zsh"
+  files << "oh-my-zsh/custom/tmux.zsh"
   files.each do |file|
     system %Q{mkdir -p "$HOME/.#{File.dirname(file)}"} if file =~ /\//
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
