@@ -6,9 +6,15 @@ export VISUAL=vim
 export EDITOR=vim
 export PAGER="less -E"
 
-if [ -d ~/bin ] ; then
-  PATH=~/bin:"${PATH}"
+if [ -d $HOME/bin ] ; then
+  PATH="$HOME/bin:$PATH"
 fi
+
+if [ -d $HOME/.gems/bin ] ; then
+  PATH="$HOME/.gems/bin:$PATH"
+fi
+
+export PATH
 
 export HISTSIZE=2000
 export SAVEHIST=2000
