@@ -9,3 +9,6 @@ export PAGER="less -E"
 if [ -d ~/bin ] ; then
   PATH=~/bin:"${PATH}"
 fi
+
+export HISTSIZE=2000
+export SAVEHIST=2000
