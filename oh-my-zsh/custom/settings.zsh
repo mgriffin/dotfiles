@@ -18,3 +18,6 @@ export PATH
 
 export HISTSIZE=2000
 export SAVEHIST=2000
+
+export GEM_HOME="$HOME/.gems"
+export GEM_PATH="$GEM_HOME:/usr/lib/ruby/gems/1.8"
