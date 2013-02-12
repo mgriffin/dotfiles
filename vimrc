@@ -65,6 +65,13 @@ nnoremap <silent> <LocalLeader>rt :tabnew ~/.vimrc<CR>
 nnoremap <silent> <LocalLeader>re :e ~/.vimrc<CR>
 nnoremap <silent> <LocalLeader>rd :e ~/.vim/ <CR>
 
+"" Get rid of the arrow keys
+"" This is the big leagues now, better get used to it quick!
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
 " Tabs
 nnoremap <silent> <LocalLeader>[ :tabprev<CR>
 nnoremap <silent> <LocalLeader>] :tabnext<CR>
