@@ -11,6 +11,7 @@ task :install do
   files << "oh-my-zsh/custom/aliases.zsh"
   files << "oh-my-zsh/custom/settings.zsh"
   files << "oh-my-zsh/custom/tmux.zsh"
+  files << "oh-my-zsh/custom/correction.zsh"
   files.each do |file|
     system %Q{mkdir -p "$HOME/.#{File.dirname(file)}"} if file =~ /\//
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
