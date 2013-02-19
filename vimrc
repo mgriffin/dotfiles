@@ -58,6 +58,7 @@ au BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
 au BufRead,BufNewFile {*.tex} set ft=tex
 au BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
 au BufRead,BufNewFile {*.json} set ft=json
+au BufRead,BufNewFile {*.ldg,*.ledger} set ft=ledger
 
 " Key mappings
 nnoremap <silent> <LocalLeader>rs :source ~/.vimrc<CR>
