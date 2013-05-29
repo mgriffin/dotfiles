@@ -59,6 +59,7 @@ au BufRead,BufNewFile {*.tex} set ft=tex
 au BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
 au BufRead,BufNewFile {*.json} set ft=json
 au BufRead,BufNewFile {*.ldg,*.ledger} set ft=ledger
+au FileType php :setlocal sw=4 ts=4 sts=4
 
 " Key mappings
 nnoremap <silent> <LocalLeader>rs :source ~/.vimrc<CR>
