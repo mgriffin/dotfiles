@@ -50,7 +50,7 @@ set guioptions=ac " remove menus and scrollbars from the gui vim
 set scrolloff=8
 
 set nolist " Display unprintable characters f12 - switches
-set listchars=tab:·\ ,eol:¶,trail:·,extends:»,precedes:« " Unprintable chars mapping
+set listchars=tab:Â·\ ,eol:Â¶,trail:Â·,extends:Â»,precedes:Â« " Unprintable chars mapping
 
 " Auto commands
 au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
@@ -85,7 +85,5 @@ map <silent> <F12> :set invlist<CR>
 " generate HTML version current buffer using current color scheme
 map <silent> <LocalLeader>2h :runtime! syntax/2html.vim<CR> 
 
-
-
-let g:Powerline_symbols = 'fancy'
+  let g:airline_powerline_fonts=1
 filetype indent plugin on     " required! 
