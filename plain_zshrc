@@ -118,3 +118,7 @@ colors
 ##set the prompt from earlier## 
 myprmpt
 
+## Adds the boxen path information
+if [ -f /opt/boxen/env.sh ]; then
+  source /opt/boxne/env.sh
+fi
