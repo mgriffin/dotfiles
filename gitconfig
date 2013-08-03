@@ -27,3 +27,5 @@
   lp = log -p
   sh = show --stat
   s = status -s
+[push]
+	default = simple
