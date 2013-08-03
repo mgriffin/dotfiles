@@ -15,7 +15,13 @@
 autoload promptinit
 promptinit
 
-alias myprmpt='PS1="%B%{${fg[green]}%}[%b%n%B%{${fg[green]}%}@%b%m%B%{${fg[green]}%}]%b %B%{${fg[green]}%}[%b%{${fg[magenta]}%}%!%B%{${fg[green]}%}]%b%B=>%b"; RPS1="(%B%{${fg[red]}%}%~%b) [%B%{${fg[red]}%}%T%b]"'
+autoload -U colors
+colors
+
+local smiley="%(?,%F{green}☺%f,%F{red}☹%f)"
+
+PS1="%B%{${fg[green]}%}[%b%n%B%{${fg[green]}%}@%b%m%B%{${fg[green]}%}]%b %B%{${fg[green]}%}[%b%{${fg[magenta]}%}%!%B%{${fg[green]}%}]%b ${smiley} %B=>%b "
+RPS1="(%B%{${fg[red]}%}%~%b) [%B%{${fg[red]}%}%T%b]"
 
 export PS2="Uh oh...summats wrong >>> "
 
@@ -113,10 +119,6 @@ alias   ff='find . -name \!* -print'
 alias  p='ps -ef -o user,pid,pcpu,pmem,vsz,rss,tty,s,stime,comm|sort'
 
 umask 077
-autoload -U colors
-colors
-##set the prompt from earlier##
-myprmpt
 
 ## Adds the boxen path information
 if [ -f /opt/boxen/env.sh ]; then
