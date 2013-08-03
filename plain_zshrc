@@ -29,9 +29,10 @@ setopt HIST_IGNORE_ALL_DUPS # If a new command line being added to the history
                             # list duplicates an older one, the older command is removed from the list
 setopt HIST_IGNORE_SPACE    # remove command lines from the history list when
                             # the first character on the line is a space
-export HISTFILE=~/.zsh_history
-export HISTSIZE=50000        #  The size of the history.
-export HISTFILESIZE=50000    #  The size of the history file
+HISTFILE=~/.zsh_history
+HISTSIZE=50000        #  The size of the history.
+HISTFILESIZE=50000    #  The size of the history file
+SAVEHIST=$((HISTSIZE/2))
 bindkey -e; MODE=emacs # history - up key :)
 
 
@@ -57,10 +58,6 @@ setopt ignoreeof
 
 ###      Extended filename generation.                                     ###
 setopt extendedglob
-
-###      Dont put command-lines into the history if they are duplicates    ###
-###      of previous command-lines.                                        ###
-setopt histignoredups
 
 ###      Show the trailing identification (type) mark on files when        ###
 ###      listing them as possible compleations.                            ###
@@ -106,7 +103,6 @@ alias  po='popd'
 ###      Aliases for shortcuts.                                            ###
 
 alias	tidy="~/bin/tidy -config config -f errs -u -clean -m $*"
-alias   h='history'
 alias   lo='logout'
 alias   ff='find . -name \!* -print'
 
