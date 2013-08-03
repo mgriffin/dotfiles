@@ -7,7 +7,7 @@
 ###         Modifications by Bobb then Bubble and finally Mike             ###
 ###            This version  2013-08-03                                    ###
 ###                                                                        ###
-############################################################################## 
+##############################################################################
 
 
 ##############################################################################
@@ -42,13 +42,13 @@ bindkey -e; MODE=emacs # history - up key :)
 
 ###      Automatically use menu completion after the second attempt at
 ###      completion                                                        ###
-setopt automenu 
+setopt automenu
 
 ###      The name of a directory can be used as a command to change        ###
 ###      directories to that directory.                                    ###
-setopt autocd          
+setopt autocd
 
-###      If the argument passed to the cd command has the value of a       ###  
+###      If the argument passed to the cd command has the value of a       ###
 ###      valid directory, that directory becomes the current directory.    ###
 setopt cdablevars
 
@@ -93,7 +93,7 @@ export CLICOLOR=1
 ##############################################################################
 ###      Aliases for investigating files.                                  ###
 alias  l='ls -lFG'
-alias  ll='ls -laFG'                                                  
+alias  ll='ls -laFG'
 alias  sz='source ~/.zshrc'
 alias  pu='pushd'
 alias  po='popd'
@@ -115,7 +115,7 @@ alias  p='ps -ef -o user,pid,pcpu,pmem,vsz,rss,tty,s,stime,comm|sort'
 umask 077
 autoload -U colors
 colors
-##set the prompt from earlier## 
+##set the prompt from earlier##
 myprmpt
 
 ## Adds the boxen path information
