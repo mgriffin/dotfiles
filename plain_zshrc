@@ -122,3 +122,8 @@ myprmpt
 if [ -f /opt/boxen/env.sh ]; then
   source /opt/boxen/env.sh
 fi
+
+## Adds a git prompt
+if [ -f ~/src/dotfiles/git_prompt.zsh ]; then
+  source ~/src/dotfiles/git_prompt.zsh
+fi
