@@ -48,7 +48,7 @@ setopt automenu
 ###      directories to that directory.                                    ###
 setopt autocd          
 
-###      If the arguement passed to the cd command has the value of a      ###  
+###      If the argument passed to the cd command has the value of a       ###  
 ###      valid directory, that directory becomes the current directory.    ###
 setopt cdablevars
 
