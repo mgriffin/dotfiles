@@ -82,6 +82,9 @@ export PAGER="less -E"
 #export TERM=xterm-color
 #export COLORTERM=dtterm
 
+### Set the timezone
+TZ='Europe/Dublin'; export TZ
+
 ### Get rid of that feckin beep
 setopt no_beep
 
