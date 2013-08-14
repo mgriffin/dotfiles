@@ -1,0 +1,131 @@
+##############################################################################
+###         This is the Zsh record file >> .zshrc                          ###
+###                                                                        ###
+###         Other setup files include....                                  ###
+###            .zshenv .zlogin .zlogout .zprofile                          ###
+###                                                                        ###
+###         Modifications by Bobb then Bubble and finally Mike             ###
+###            This version  2013-08-03                                    ###
+###                                                                        ###
+##############################################################################
+
+
+##############################################################################
+###      Set the prompt.                                                   ###
+autoload promptinit
+promptinit
+
+autoload -U colors
+colors
+
+local smiley="%(?,%F{green}☺%f,%F{red}☹%f)"
+
+PS1="%B%{${fg[green]}%}[%b%n%B%{${fg[green]}%}@%b%m%B%{${fg[green]}%}]%b %B%{${fg[green]}%}[%b%{${fg[magenta]}%}%!%B%{${fg[green]}%}]%b ${smiley} %B=>%b "
+RPS1="(%B%{${fg[red]}%}%~%b) [%B%{${fg[red]}%}%T%b]"
+
+export PS2="Uh oh...summats wrong >>> "
+
+
+##############################################################################
+###      Set up the history for the command line.                          ###
+setopt INC_APPEND_HISTORY   # append history list to the history file (important for multiple parallel zsh sessions!)
+setopt SHARE_HISTORY        # import new commands from the history file also in other zsh-session
+setopt EXTENDED_HISTORY     # save each command's beginning timestamp and the duration to the history file
+setopt HIST_IGNORE_ALL_DUPS # If a new command line being added to the history
+                            # list duplicates an older one, the older command is removed from the list
+setopt HIST_IGNORE_SPACE    # remove command lines from the history list when
+                            # the first character on the line is a space
+HISTFILE=~/.zsh_history
+HISTSIZE=50000        #  The size of the history.
+HISTFILESIZE=50000    #  The size of the history file
+SAVEHIST=$((HISTSIZE/2))
+bindkey -e; MODE=emacs # history - up key :)
+
+
+
+##############################################################################
+###      Set particular options.                                           ###
+
+###      Automatically use menu completion after the second attempt at
+###      completion                                                        ###
+setopt automenu
+
+###      The name of a directory can be used as a command to change        ###
+###      directories to that directory.                                    ###
+setopt autocd
+
+###      If the argument passed to the cd command has the value of a       ###
+###      valid directory, that directory becomes the current directory.    ###
+setopt cdablevars
+
+###      Ignore the end of file (^D) charachter, exit or logout must       ###
+###      be typed to log out of the shell
+setopt ignoreeof
+
+###      Extended filename generation.                                     ###
+setopt extendedglob
+
+###      Show the trailing identification (type) mark on files when        ###
+###      listing them as possible compleations.                            ###
+setopt listtypes
+
+###      Set the default editor to be used in applications.                ###
+export EDITOR=vim
+
+###      Set the default Visual editor to be used.                         ###
+export VISUAL=vim
+
+###      Application to list ling files page by page.                      ###
+export PAGER="less -E"
+
+### Set the term type, important for colours on puTTY
+#export TERM=xterm-color
+#export COLORTERM=dtterm
+
+### Get rid of that feckin beep
+setopt no_beep
+
+##############################################################################
+###      Bind the keys for either editing the command line in either       ###
+###      vi or emacs mode.                                                 ###
+#alias  se='bindkey -e; MODE=emacs; sp'
+#alias  sv='bindkey -v; MODE=vi; sp'
+#se
+
+
+# make ls display colors, reinforce with CLICOLOR and LSCOLORS
+export CLICOLOR=1
+
+##############################################################################
+###      Aliases for investigating files.                                  ###
+alias  l='ls -lFG'
+alias  ll='ls -laFG'
+alias  sz='source ~/.zshrc'
+alias  pu='pushd'
+alias  po='popd'
+
+
+##############################################################################
+###      Aliases for shortcuts.                                            ###
+
+alias	tidy="~/bin/tidy -config config -f errs -u -clean -m $*"
+alias   lo='logout'
+alias   ff='find . -name \!* -print'
+
+
+##############################################################################
+###         Aliases for finding out what people are doing.                 ###
+###         ,and for investigating processes.                              ###
+alias  p='ps -ef -o user,pid,pcpu,pmem,vsz,rss,tty,s,stime,comm|sort'
+
+umask 077
+
+## Adds the boxen path information
+if [ -f /opt/boxen/env.sh ]; then
+  source /opt/boxen/env.sh
+fi
+
+## Adds a git prompt
+if [ -f ~/src/dotfiles/git_prompt.zsh ]; then
+  source ~/src/dotfiles/git_prompt.zsh
+fi
