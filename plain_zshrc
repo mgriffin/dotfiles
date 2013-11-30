@@ -120,6 +120,11 @@ alias  p='ps -ef -o user,pid,pcpu,pmem,vsz,rss,tty,s,stime,comm|sort'
 
 umask 077
 
+if [ -d /usr/local/texlive/2013basic/bin/x86_64-darwin ] ; then
+  PATH="/usr/local/texlive/2013basic/bin/x86_64-darwin:$PATH"
+fi
+
+export PATH
 ## Adds the boxen path information
 if [ -f /opt/boxen/env.sh ]; then
   source /opt/boxen/env.sh
