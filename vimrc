@@ -85,5 +85,7 @@ map <silent> <F12> :set invlist<CR>
 " generate HTML version current buffer using current color scheme
 map <silent> <LocalLeader>2h :runtime! syntax/2html.vim<CR> 
 
-  let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts=1
+"" Stop the bufferline from duplicating the filenames
+let g:bufferline_echo = 0
 filetype indent plugin on     " required! 
