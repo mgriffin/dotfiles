@@ -121,10 +121,16 @@ alias   ff='find . -name \!* -print'
 ###         ,and for investigating processes.                              ###
 alias  p='ps -ef -o user,pid,pcpu,pmem,vsz,rss,tty,s,stime,comm|sort'
 
-umask 077
+umask 0002
 
+PATH="/usr/local/bin:/usr/bin:/bin:/usr/games"
 if [ -d /usr/local/texlive/2013basic/bin/x86_64-darwin ] ; then
   PATH="/usr/local/texlive/2013basic/bin/x86_64-darwin:$PATH"
+fi
+
+### for rbenv
+if [ -d $HOME/.rbenv/versions/1.9.3-p194/bin ] ; then
+  PATH="$HOME/.rbenv/versions/1.9.3-p194/bin:$PATH"
 fi
 
 export PATH
