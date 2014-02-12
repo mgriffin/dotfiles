@@ -101,8 +101,8 @@ export CLICOLOR=1
 
 ##############################################################################
 ###      Aliases for investigating files.                                  ###
-alias  l='ls -lFG'
-alias  ll='ls -laFG'
+alias  l='ls -lF'
+alias  ll='ls -laF'
 alias  sz='source ~/.zshrc'
 alias  pu='pushd'
 alias  po='popd'
