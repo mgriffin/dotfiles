@@ -124,6 +124,7 @@ alias  p='ps -ef -o user,pid,pcpu,pmem,vsz,rss,tty,s,stime,comm|sort'
 #############################################################################
 ###        Aliases for long winded commands.                              ###
 alias bal="ledger -f ~/finances/accounts.ledger balance Assets Liabilities"
+alias pup="sudo puppet apply --modulepath=/home/mike/puppet/modules /home/mike/puppet/manifests/site.pp"
 
 umask 022
 
