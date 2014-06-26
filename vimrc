@@ -85,6 +85,11 @@ map <silent> <F12> :set invlist<CR>
 " generate HTML version current buffer using current color scheme
 map <silent> <LocalLeader>2h :runtime! syntax/2html.vim<CR> 
 
+""" to save encrypted files
+command -nargs=1 WriteEncrypted w !gpg -c -o <q-args>
+
+
+let g:airline_theme='solarized'
 let g:airline_powerline_fonts=1
 "" Stop the bufferline from duplicating the filenames
 let g:bufferline_echo = 0
