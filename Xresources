@@ -1,0 +1,70 @@
+! urxvt
+URxvt*buffered: true
+URxvt*cursorBlink: false
+URxvt*colorUL:  yellow
+URxvt*underlineColor: yellow
+!URxvt*font:  xft:Hermit:size=10:antialias=true
+URxvt.font:xft:Source Code Pro for Powerline:regular:pixelsize=11
+URxvt.boldFont:xft:Source Code Pro for Powerline:bold:pixelsize=11
+URxvt.letterSpace: -1
+URxvt*depth: 32
+URxvt*borderless: 1
+URxvt*scrollBar: false
+URxvt*loginShell: true
+Urxvt*secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
+URxvt*saveLines: 5000
+URxvt*termName: rxvt-unicode
+URxvt*geometry: 270x100
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: firefox
+URxvt.matcher.button: 1
+
+!-- Xft settings -- !
+!Xft.dpi:        166
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
+!!Source http://github.com/altercation/solarized
+
+*background: #002b36
+*foreground: #657b83
+!!*fading: 40
+*fadeColor: #002b36
+*cursorColor: #93a1a1
+*pointerColorBackground: #586e75
+*pointerColorForeground: #93a1a1
+
+!! black dark/light
+*color0: #073642
+*color8: #002b36
+
+!! red dark/light
+*color1: #dc322f
+*color9: #cb2b16
+
+!! green dark/light
+*color2: #859900
+*color10: #589e75
+
+!! yellow dark/light
+*color3: #b58900
+*color11: #657b83
+
+!! blue dark/light
+*color4: #268bd2
+*color12: #839496
+
+!! magenta dark/light
+*color5: #d33682
+*color13: #6c71c4
+
+!! cyan dark/light
+*color6: #2aa198
+*color14: #93a1a1
+
+!! white dark/light
+*color7: #eee8d5
+*color15: #fdf6e3
