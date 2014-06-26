@@ -1,0 +1,13 @@
+--color
+--color-filename=magenta
+--color-lineno=green
+--color-match=yellow
+--nogroup
+--ignore-dir=BACKUP/
+--ignore-dir=build/
+--ignore-dir=sitemoves/
+--ignore-dir=.svn/
+--ignore-dir=test/
+--ignore-dir=testing/
+--pager=less -rXE
+--sort-files
