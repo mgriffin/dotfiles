@@ -24,6 +24,7 @@ export EDITOR=vim
 
 ### and put things in my path
 export PATH=/home/mike/apps/bin:$PATH
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 ### history settings
 # set the history files to be much much bigger than the default
@@ -42,4 +43,5 @@ shopt -s cmdhist
 # immediately write the command to history instead of waiting until the end of the session
 PROMPT_COMMAND='history -a'
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+#set up hub
+eval "$(hub alias -s)"
