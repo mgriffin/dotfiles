@@ -1,12 +1,11 @@
+[include]
+  path = ~/.gitconfig-user
 [credential]
-  helper = /opt/boxen/bin/boxen-git-credential
+	helper = osxkeychain
 [core]
-  excludesfile = /opt/boxen/config/git/gitignore
+  excludesfile = ~/.gitignore
 [hub]
   protocol = https
-[user]
-  name = Mike Griffin
-  email = mgriffin@github.com
 [color]
   diff = auto
   status = auto
