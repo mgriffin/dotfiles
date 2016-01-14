@@ -17,8 +17,8 @@ for DOTFILE in *; do
 
   echo $DOTFILE | egrep -q '(dotfiles|\.txt|\.md)' && continue
 
-  # Don't install some files unless you're also called Mike.
-  if echo $USER | grep -vq 'mike'
+  # Don't install some files unless you're called michaelgriffin.
+  if echo $USER | grep -vq 'michaelgriffin'
   then
     echo $DOTFILE | grep -q 'gitconfig-user' && continue
     echo $DOTFILE | grep -q 'ssh' && continue
