@@ -6,7 +6,7 @@
   protocol = https
 [user]
   name = Mike Griffin
-  email = griffinm@gmail.com
+  email = mgriffin@github.com
 [color]
   diff = auto
   status = auto
