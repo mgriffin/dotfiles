@@ -10,8 +10,8 @@ if [ -f ~/.git-prompt.sh ]; then
 fi
 
 ### Set up a sane prompt
-### [11:52:32] mike@sprokett:~/.dotfiles $
-PS1="[${txtgrn}\t${txtrst}] \u@${txtred}\h${txtrst}:${txtylw}\w${txtrst} \$ "
+### [11:52:32] mike:~/.dotfiles (git_stuff) $
+PS1="[${txtgrn}\t${txtrst}] \u:${txtylw}\w${txtrst}\$(__git_ps1) \$ "
 
 ### aliases
 alias l='ls -lF --color=auto'
