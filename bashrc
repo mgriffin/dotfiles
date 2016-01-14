@@ -14,17 +14,12 @@ fi
 PS1="[${txtgrn}\t${txtrst}] \u:${txtylw}\w${txtrst}\$(__git_ps1) \$ "
 
 ### aliases
-alias l='ls -lF --color=auto'
-alias ll='ls -alF --color=auto'
+alias l='ls -lFG'
+alias ll='ls -alFG'
 alias sb='source ~/.bashrc'
 alias pup="sudo puppet apply --modulepath=/home/mike/src/puppet/modules /home/mike/src/puppet/manifests/site.pp"
 
-alias tinsight='phpunit -c /home/mike/apps/phpunit/insight.xml'
-alias tframework='phpunit -c /home/mike/apps/phpunit/framework.xml'
-
-alias herb='ssh -f hg -L 5901:localhost:5901 -L 5902:localhost:5902 -L 5903:localhost:5903 -L 5904:localhost:5904 -L 5905:localhost:5905 -L 5906:localhost:5906 -L 5907:localhost:5907 -L 5908:localhost:5908 -N'
-
-### set a sane editor
+### set my editor
 export EDITOR=vim
 
 ### and put things in my path
