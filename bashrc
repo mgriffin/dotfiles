@@ -2,9 +2,6 @@ txtgrn='\[\e[0;32m\]' # Green
 txtylw='\[\e[0;33m\]' # Yellow
 txtrst='\[\e[0m\]'    # Text Reset
 
-if [ -f /opt/boxen/env.sh ]; then
-  . /opt/boxen/env.sh
-fi
 if [ -f ~/.git-prompt.sh ]; then
   . ~/.git-prompt.sh
 fi
