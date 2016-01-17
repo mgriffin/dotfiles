@@ -14,14 +14,14 @@ PS1="[${txtgrn}\t${txtrst}] \u:${txtylw}\w${txtrst}\$(__git_ps1) \$ "
 alias l='ls -lFG'
 alias ll='ls -alFG'
 alias sb='source ~/.bashrc'
-alias pup="sudo puppet apply --modulepath=/home/mike/src/puppet/modules /home/mike/src/puppet/manifests/site.pp"
+# from @keeran
+alias convert_epochs="perl -Mposix -pe 's/ ([0-9]{10}) /POSIX::strftime( \" %Y-%m-%d %H:%M:%S \", gmtime($1))/eg'"
 
 ### set my editor
 export EDITOR=vim
 
-### and put things in my path
-export PATH=/home/mike/apps/bin:$PATH
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 ### history settings
 # set the history files to be much much bigger than the default
