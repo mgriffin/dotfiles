@@ -20,7 +20,7 @@ alias convert_epochs="perl -Mposix -pe 's/ ([0-9]{10}) /POSIX::strftime( \" %Y-%
 ### set my editor
 export EDITOR=vim
 
-export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:/usr/local/sbin:$PATH"
 eval "$(rbenv init -)"
 
 ### history settings
