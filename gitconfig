@@ -42,3 +42,7 @@
 	required = true
 [github]
 	user = mgriffin
+[commit]
+	gpgsign = true
+[user]
+	signingkey = CF4A3B43
