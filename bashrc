@@ -14,8 +14,6 @@ PS1="[${txtgrn}\t${txtrst}] \u:${txtylw}\w${txtrst}\$(__git_ps1) \$ "
 alias l='ls -lFG'
 alias ll='ls -alFG'
 alias sb='source ~/.bashrc'
-# from @keeran
-alias convert_epochs="perl -Mposix -pe 's/ ([0-9]{10}) /POSIX::strftime( \" %Y-%m-%d %H:%M:%S \", gmtime($1))/eg'"
 function msdate() { perl -e "print scalar localtime($1 / 1000) . \"\n\""; }
 
 ### set my editor
