@@ -16,6 +16,10 @@ alias ll='ls -alFG'
 alias sb='source ~/.bashrc'
 function msdate() { perl -e "print scalar localtime($1 / 1000) . \"\n\""; }
 
+### git aliases
+alias gf='git fetch'
+alias gm='git merge origin/master'
+
 ### set my editor
 export EDITOR=vim
 
