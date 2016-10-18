@@ -4,7 +4,6 @@
 DOTFILESDIRREL=$(dirname $0)
 cd $DOTFILESDIRREL
 DOTFILESDIR=$(pwd -P)
-SCRIPTNAME=$(basename $0)
 
 [ $(uname -s) = "Darwin" ] && export OSX=1 && export UNIX=1
 [ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
@@ -15,7 +14,7 @@ for DOTFILE in *; do
   [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
   DIRFILE="$DOTFILESDIR/$DOTFILE"
 
-  echo $DOTFILE | egrep -q '(dotfiles|\.txt|\.md)' && continue
+  echo $DOTFILE | egrep -q '(^script/$|\.txt$|\.md$)' && continue
 
   # Don't install some files unless you're called michaelgriffin.
   if echo $USER | grep -vq 'michaelgriffin'
