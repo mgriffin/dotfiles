@@ -31,6 +31,9 @@ if command -v rbenv >/dev/null; then
   export PATH="$HOME/bin:$HOME/.rbenv/bin:/usr/local/sbin:$PATH"
   eval "$(rbenv init -)"
 fi
+if command -v nodeenv >/dev/null; then
+  eval "$(nodenv init -)"
+fi
 
 ### history settings
 # set the history files to be much much bigger than the default
