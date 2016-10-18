@@ -20,11 +20,17 @@ function msdate() { perl -e "print scalar localtime($1 / 1000) . \"\n\""; }
 alias gf='git fetch'
 alias gm='git merge origin/master'
 
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2 | tr ' ' '\n')" scp sftp ssh
+
 ### set my editor
 export EDITOR=vim
 
-export PATH="$HOME/.rbenv/bin:/usr/local/sbin:$PATH"
-eval "$(rbenv init -)"
+# Only run this if rbenv is installed
+if command -v rbenv >/dev/null; then
+  export PATH="$HOME/bin:$HOME/.rbenv/bin:/usr/local/sbin:$PATH"
+  eval "$(rbenv init -)"
+fi
 
 ### history settings
 # set the history files to be much much bigger than the default
@@ -43,5 +49,7 @@ shopt -s cmdhist
 # immediately write the command to history instead of waiting until the end of the session
 PROMPT_COMMAND='history -a'
 
-#set up hub
-eval "$(hub alias -s)"
+#set up hub if it's installed
+if command -v hub >/dev/null; then
+  eval "$(hub alias -s)"
+fi
