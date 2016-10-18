@@ -4,7 +4,7 @@ This is a repository of my config files so that I can set things up as I like th
 
 ## Installation
 
-Run `install-dotfiles.sh` after checkout to symlink (or copy) everything in this directory to your home directory.
+Run `script setup` after checkout to symlink (or copy) everything in this directory to your home directory.
 
 ## References
 
