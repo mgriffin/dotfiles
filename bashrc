@@ -2,8 +2,8 @@ txtgrn='\[\e[0;32m\]' # Green
 txtylw='\[\e[0;33m\]' # Yellow
 txtrst='\[\e[0m\]'    # Text Reset
 
-if [ -f ~/.git-prompt.sh ]; then
-  . ~/.git-prompt.sh
+if [ -f ~/.git-prompt ]; then
+  . ~/.git-prompt
 fi
 
 ### Set up a sane prompt
