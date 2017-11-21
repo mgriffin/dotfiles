@@ -80,3 +80,4 @@ if screenName == "Color LCD" then
 elseif screenName == "Thunderbolt Display" then
   hs.layout.apply(bigWindowLayout)
 end
+hs.loadSpoon('ControlEscape'):start() -- Load Hammerspoon bits from https://github.com/jasonrudolph/ControlEscape.spoon
