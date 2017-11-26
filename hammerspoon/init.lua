@@ -1,7 +1,7 @@
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
   hs.reload()
 end)
-hs.alert.show("Config loaded")
+hs.alert.show("🤘 Config loaded 🤘")
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
