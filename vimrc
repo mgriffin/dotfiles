@@ -25,13 +25,31 @@ set shiftwidth=2 " Set the default shift width for indents
 set expandtab " Make tabs into spaces (set by tabstop)
 set smarttab " Smarter tab levels
 
-" use comma as <Leader> key instead of backslash
-let mapleader="\<Space>"
+" Key mappings
+" use space as <Leader> key instead of backslash
+let mapleader="\<space>"
+let maplocalleader = "\\"
 
 nnoremap <leader><leader> <c-^>
-map <silent> <leader>l :set invnumber<cr>
+noremap <silent> <leader>l :set invnumber<cr>
 nnoremap <leader>h :nohl<CR>
 nnoremap <leader>b :buffers<CR>:buffer<Space>
+
+nnoremap <leader>d "=strftime("%Y-%m-%d")<CR>P
+inoremap <leader>d <C-R>=strftime("%Y-%m-%d")<CR>
+
+nnoremap <leader>ev :split $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+"" Get rid of the arrow keys
+"" This is the big leagues now, better get used to it quick!
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
+" show/Hide hidden Chars
+noremap <silent> <F12> :set invlist<CR> 
 
 " Visual
 set nonumber " Line numbers off
@@ -53,40 +71,26 @@ set nolist " Display unprintable characters f12 - switches
 set listchars=tab:·\ ,eol:¶,trail:·,extends:»,precedes:« " Unprintable chars mapping
 
 " Auto commands
-au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
-au BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
-au BufRead,BufNewFile {*.tex} set ft=tex
-au BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
-au BufRead,BufNewFile {*.json} set ft=json
-au BufRead,BufNewFile {*.ldg,*.ledger} set ft=ledger
-au FileType php :setlocal sw=4 ts=4 sts=4
-
-" Key mappings
-nnoremap <silent> <LocalLeader>rs :source ~/.vimrc<CR>
-nnoremap <silent> <LocalLeader>rt :tabnew ~/.vimrc<CR>
-nnoremap <silent> <LocalLeader>re :e ~/.vimrc<CR>
-nnoremap <silent> <LocalLeader>rd :e ~/.vim/ <CR>
-
-"" Get rid of the arrow keys
-"" This is the big leagues now, better get used to it quick!
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-
-" Tabs
-nnoremap <silent> <LocalLeader>[ :tabprev<CR>
-nnoremap <silent> <LocalLeader>] :tabnext<CR>
-
-"
-" show/Hide hidden Chars
-map <silent> <F12> :set invlist<CR> 
-
-" generate HTML version current buffer using current color scheme
-map <silent> <LocalLeader>2h :runtime! syntax/2html.vim<CR> 
-
-""" to save encrypted files
-command -nargs=1 WriteEncrypted w !gpg -c -o <q-args>
+autocmd BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
+autocmd BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
+autocmd BufRead,BufNewFile {*.tex} set ft=tex
+autocmd BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
+autocmd BufRead,BufNewFile {*.json} set ft=json
+autocmd BufRead,BufNewFile {*.ldg,*.ledger} set ft=ledger
+autocmd BufRead,BufNewFile {.vimrc} set ft=vim
+augroup filetype_php
+  autocmd!
+  autocmd FileType php setlocal sw=4 ts=4 sts=4
+augroup END
+augroup filetype_ruby
+  autocmd!
+  autocmd FileType ruby setlocal number
+  autocmd FileType ruby nnoremap <buffer> <leader>c I#<esc>
+augroup END
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim nnoremap <buffer> <leader>c I"<esc>
+augroup END
 
 let g:airline_theme='solarized'
 set runtimepath^=~/.vim/plugin/ctrlp.vim
