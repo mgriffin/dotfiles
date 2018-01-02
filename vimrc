@@ -32,11 +32,10 @@ let maplocalleader = "\\"
 
 nnoremap <leader><leader> <c-^>
 noremap <silent> <leader>l :set invnumber<cr>
-nnoremap <leader>h :nohl<CR>
-nnoremap <leader>b :buffers<CR>:buffer<Space>
+nnoremap <leader>h :nohl<cr>
+nnoremap <leader>b :buffers<cr>:buffer<Space>
 
-nnoremap <leader>d "=strftime("%Y-%m-%d")<CR>P
-inoremap <leader>d <C-R>=strftime("%Y-%m-%d")<CR>
+nnoremap <leader>d "=strftime("%Y-%m-%d")<cr>P
 
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -49,7 +48,7 @@ noremap <Left> <Nop>
 noremap <Right> <Nop>
 
 " show/Hide hidden Chars
-noremap <silent> <F12> :set invlist<CR> 
+noremap <silent> <F12> :set invlist<cr>
 
 " Visual
 set nonumber " Line numbers off
@@ -78,6 +77,8 @@ autocmd BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
 autocmd BufRead,BufNewFile {*.json} set ft=json
 autocmd BufRead,BufNewFile {*.ldg,*.ledger} set ft=ledger
 autocmd BufRead,BufNewFile {.vimrc} set ft=vim
+autocmd BufRead,BufNewFile {*.coffee} set ft=javascript
+
 augroup filetype_php
   autocmd!
   autocmd FileType php setlocal sw=4 ts=4 sts=4
@@ -90,6 +91,11 @@ augroup END
 augroup filetype_vim
   autocmd!
   autocmd FileType vim nnoremap <buffer> <leader>c I"<esc>
+augroup END
+augroup filetype_javascript
+  autocmd!
+  autocmd FileType javascript setlocal number
+  autocmd FileType javascript nnoremap <buffer> <leader>c I#<esc>
 augroup END
 
 let g:airline_theme='solarized'
