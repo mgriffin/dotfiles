@@ -1,0 +1,86 @@
+IMAPAccount mikegriffin
+Host imap.fastmail.com
+User mikegriffin@fastmail.com
+PassCmd "security find-generic-password -s mbsync-mikegriffin-password -w"
+SSLType IMAPS
+AuthMechs LOGIN
+
+IMAPStore mikegriffin-remote
+Account mikegriffin
+
+MaildirStore mikegriffin-local
+# The trailing "/" is important
+Path ~/Mail/mikegriffin/
+Inbox ~/Mail/mikegriffin/Inbox
+Flatten .
+
+Channel mikegriffin
+Master :mikegriffin-remote:
+Slave :mikegriffin-local:
+Patterns *
+Create Both
+Expunge Both
+SyncState *
+
+Group mikegriffin
+Channel mikegriffin
+
+IMAPAccount github
+Host imap.gmail.com
+User mgriffin@github.com
+PassCmd "security find-generic-password -s mbsync-github-password -w /Users/mike/Library/Keychains/login.keychain-db"
+SSLType IMAPS
+AuthMechs LOGIN
+
+IMAPStore github-remote
+Account github
+
+MaildirStore github-local
+# The trailing "/" is important
+Path ~/Mail/github/
+Inbox ~/Mail/github/Inbox
+Flatten .
+SubFolders Legacy
+
+Channel github-all
+Master :github-remote:"[Gmail]/All Mail"
+Slave :github-local:Archive
+Create Both
+Expunge Both
+SyncState *
+
+Channel github-sent
+Master :github-remote:"[Gmail]/Sent Mail"
+Slave :github-local:Sent
+Create Both
+Expunge Both
+SyncState *
+
+Channel github-bin
+Master :github-remote:"[Gmail]/Bin"
+Slave :github-local:Bin
+Create Both
+Expunge Both
+SyncState *
+
+Channel github
+Master :github-remote:
+Slave :github-local:
+Patterns * ![Gmail]* !ghe* !Sent !Archive !Bin
+Create Both
+Expunge Both
+SyncState *
+
+Channel github-ghe
+Master :github-remote:ghe.io
+Slave :github-local:ghe_io
+Create Both
+Expunge Both
+SyncState *
+
+Group github
+Channel github
+Channel github-ghe
+Channel github-sent
+Channel github-bin
+Channel github-all

@@ -1,0 +1,44 @@
+# vim: ft=muttrc
+source ~/.muttrc
+
+set folder    = "~/Mail/mikegriffin"
+set mbox      = "+Inbox"
+set spoolfile = "+Inbox"
+set timeout=360  #Check for mail every minute
+set mail_check=360
+set postponed       = "+Drafts"
+set record          = "+Sent Items"
+set trash           = "+Trash"
+
+# smtp
+#set smtp_pass = "pchccu3un4pmkdfd"
+#set smtp_url = smtp://$my_user@$my_smtp_server:587/
+#set ssl_starttls = yes
+#
+set realname = "Mike Griffin"
+set from = "mike@mikegriffin.ie"
+set sendmail = "/usr/local/bin/msmtp -a mikegriffin"
+set sendmail_wait = 0
+unset record
+
+mailboxes "+Inbox" \
+          "+Apple" \
+          "+Archive" \
+          "+Bluecarrot Archive" \
+          "+Drafts" \
+          "+Freelance" \
+          "+Junk Mail" \
+          "+LinkedIn" \
+          "+Meetups" \
+          "+PHP" \
+          "+PS Vita" \
+          "+Sent" \
+          "+Sent Items" \
+          "+Sent Messages" \
+          "+Trash" \
+          "+Uber" \
+          "+iTunes" \
+
+macro index,pager y  "<save-message>+Archive<enter>"
+bind index,pager ! noop
+macro index,pager !  "<save-message>+Junk<tab><enter>"

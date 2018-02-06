@@ -1,0 +1,35 @@
+#███╗   ███╗ ██████╗ ███╗   ██╗███████╗████████╗ █████╗ ██████╗
+#████╗ ████║██╔═══██╗████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██╔══██╗
+#██╔████╔██║██║   ██║██╔██╗ ██║███████╗   ██║   ███████║██████╔╝
+#██║╚██╔╝██║██║   ██║██║╚██╗██║╚════██║   ██║   ██╔══██║██╔══██╗
+#██║ ╚═╝ ██║╚██████╔╝██║ ╚████║███████║   ██║   ██║  ██║██║  ██║
+#╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝
+#   ██╗███████╗██╗      █████╗ ███╗   ██╗██████╗
+#   ██║██╔════╝██║     ██╔══██╗████╗  ██║██╔══██╗
+#   ██║███████╗██║     ███████║██╔██╗ ██║██║  ██║
+#   ██║╚════██║██║     ██╔══██║██║╚██╗██║██║  ██║
+#   ██║███████║███████╗██║  ██║██║ ╚████║██████╔╝
+#   ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝
+# OX! // github: acannibalox // https: raisedfist.net // smtp: kpatterson0@gmail.com
+
+color normal        white               color235
+color status        white               color234
+color indicator     color7              color237
+color tree          color238            color235
+color attachment    color6              color235
+
+color index         brightcolor65       color235    ~N      #new
+color index         color244          color235    ~R      #replied
+color index_date    brightcolor244        color235
+color index_flags      brightcolor239      color235     %A
+
+color header        brightcolor101      default     "^from:"
+color header        brightcolor101      default     "^to:"
+color header        yellow              default     "^cc:"
+color header        magenta             default     "^date:"
+color header        brightcolor101      default     "^subject:"
+
+color body          brightred           black       [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+color body          brightblue          black       (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+
+# vim: syntax=muttrc textwidth=100

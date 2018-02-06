@@ -1,0 +1,44 @@
+# vim: ft=muttrc
+source ~/.muttrc
+
+set folder    = "~/Mail/github"
+set mbox      = "+Inbox"
+set spoolfile = "+Inbox"
+set timeout=360  #Check for mail every minute
+set mail_check=360
+set postponed       = "+Drafts"
+set record          = "+Sent"
+set trash           = "+Bin"
+set header_cache=~/.mutt-github-headercache
+
+set realname = "Mike Griffin"
+set from = "mgriffin@github.com"
+set sendmail = "/usr/local/bin/msmtp -a github"
+set sendmail_wait = 0
+unset record
+
+mailboxes "+Inbox" \
+          "+Sent" \
+          "+ghe_io" \
+          "+GitHub" \
+          "+GitHub.Author" \
+          "+GitHub.Direct Mention" \
+          "+GitHub.Team Mention" \
+          "+Halp" \
+          "+new tickets" \
+          "+notifications" \
+          "+payslips" \
+          "+suspended" \
+
+set nm_default_uri="notmuch:///Users/mike/Mail/github"
+virtual-mailboxes "My INBOX" "notmuch://?query=tag:inbox"
+# notmuch bindings
+macro index \\\\ "<vfolder-from-query>"
+
+macro index O \
+  "<shell-escape>notmuch new<enter>" \
+  "Update the search index"
+
+macro index,pager y  "<save-message>+Archive<enter>"
+bind index - collapse-thread
+bind index _ collapse-all
