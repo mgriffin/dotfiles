@@ -98,10 +98,20 @@ augroup filetype_javascript
   autocmd FileType javascript nnoremap <buffer> <leader>c I#<esc>
 augroup END
 
-let g:airline_theme='solarized'
 set runtimepath^=~/.vim/plugin/ctrlp.vim
 
-let g:airline_powerline_fonts=1
-"" Stop the bufferline from duplicating the filenames
-let g:bufferline_echo = 0
 filetype indent plugin on     " required! 
+
+set statusline=
+set statusline+=\ %n
+set statusline+=\ ‹‹
+set statusline+=\ %f
+set statusline+=\ ››
+set statusline+=\ %m
+set statusline+=\ %F
+set statusline+=%=
+set statusline+=\ %{(&fenc!=''?&fenc:&enc)}
+set statusline+=\ %y
+set statusline+=\ ‹‹
+set statusline+=\ %l:%c
+set statusline+=\ ››
