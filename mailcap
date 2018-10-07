@@ -1,1 +1,2 @@
-text/html; w3m -I %{charset} -T text/html; copiousoutput;
+#text/html; w3m -I %{charset} -T text/html; copiousoutput;
+text/html; links -html-numbered-links 1 -html-images 1 -dump %s; nametemplate=%s.html; copiousoutput

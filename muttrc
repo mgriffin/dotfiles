@@ -59,5 +59,8 @@ bind index G        last-entry
 bind index,pager R        group-reply
 
 macro index,pager gi "<change-folder>!<enter>" "Go to inbox"
+macro index A \
+    "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
+    "mark all new as read"
 
 source ~/.mutt/monstar_island
