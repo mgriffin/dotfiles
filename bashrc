@@ -19,6 +19,9 @@ function msdate() { perl -e "print scalar localtime($1 / 1000) . \"\n\""; }
 ### git aliases
 alias gf='git fetch'
 alias gm='git merge origin/master'
+alias gg='git grep'
+### prune stale local branches
+alias prune='git remote prune origin && git branch -vv | grep '\''origin/.*: gone]'\'' | awk '\''{print $1}'\'' | xargs git branch -d'
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2 | tr ' ' '\n')" scp sftp ssh
