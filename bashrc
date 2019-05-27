@@ -23,6 +23,8 @@ alias gg='git grep'
 ### prune stale local branches
 alias prune='git remote prune origin && git branch -vv | grep '\''origin/.*: gone]'\'' | awk '\''{print $1}'\'' | xargs git branch -d'
 
+alias snippet='cd ~/github/business-support/snippets && ./snippets.rb -u mgriffin -i Work "Speeling misteaks"'
+
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2 | tr ' ' '\n')" scp sftp ssh
 
@@ -59,3 +61,5 @@ PROMPT_COMMAND='history -a'
 if command -v hub >/dev/null; then
   eval "$(hub alias -s)"
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
