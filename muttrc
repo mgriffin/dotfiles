@@ -63,4 +63,4 @@ macro index A \
     "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
     "mark all new as read"
 
-source ~/.mutt/monstar_island
+source ~/.mutt/mutt-colors-solarized-dark-16.muttrc
