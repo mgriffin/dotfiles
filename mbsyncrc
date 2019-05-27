@@ -14,16 +14,24 @@ Path ~/Mail/mikegriffin/
 Inbox ~/Mail/mikegriffin/Inbox
 Flatten .
 
+Channel mikegriffin-sent
+Master :mikegriffin-remote:"Sent Items"
+Slave :mikegriffin-local:Sent
+Create Both
+Expunge Both
+SyncState *
+
 Channel mikegriffin
 Master :mikegriffin-remote:
 Slave :mikegriffin-local:
-Patterns *
+Patterns * !Sent
 Create Both
 Expunge Both
 SyncState *
 
 Group mikegriffin
 Channel mikegriffin
+Channel mikegriffin-sent
 
 IMAPAccount github
 Host imap.gmail.com
