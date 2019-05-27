@@ -7,7 +7,7 @@ set spoolfile = "+Inbox"
 set timeout=360  #Check for mail every minute
 set mail_check=360
 set postponed       = "+Drafts"
-set record          = "+Sent Items"
+set record          = "+Sent"
 set trash           = "+Trash"
 
 # smtp
@@ -19,7 +19,7 @@ set realname = "Mike Griffin"
 set from = "mike@mikegriffin.ie"
 set sendmail = "/usr/local/bin/msmtp -a mikegriffin"
 set sendmail_wait = 0
-unset record
+######  unset record
 
 mailboxes "+Inbox" \
           "+Apple" \
@@ -30,11 +30,11 @@ mailboxes "+Inbox" \
           "+Junk Mail" \
           "+LinkedIn" \
           "+Meetups" \
+          "+MountainViews" \
           "+PHP" \
           "+PS Vita" \
-          "+Sent" \
           "+Sent Items" \
-          "+Sent Messages" \
+          "+Sent" \
           "+Trash" \
           "+Uber" \
           "+iTunes" \
