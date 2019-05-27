@@ -8,8 +8,6 @@ set t_Co=256 " needed to tell the colorscheme that we can use the good colours
 set hidden " to allow buffers to be hidden with pending changes
 set encoding=utf-8
 
-colorscheme solarized
-
 set pastetoggle=<F10> "  toggle between paste and normal: for 'safer' pasting from keyboard
 " Match and search
 set hlsearch " highlight search
@@ -33,7 +31,11 @@ let maplocalleader = "\\"
 nnoremap <leader><leader> <c-^>
 noremap <silent> <leader>l :set invnumber<cr>
 nnoremap <leader>h :nohl<cr>
-nnoremap <leader>b :buffers<cr>:buffer<Space>
+"nnoremap <leader>b :buffers<cr>:buffer<Space>
+nnoremap <leader>p :set invpaste<CR>
+nnoremap <leader>f :GFiles<CR>
+nnoremap <leader>F :Files<CR>
+nnoremap <leader>b :Buffers<CR>
 
 nnoremap <leader>d "=strftime("%Y-%m-%d")<cr>P
 
@@ -105,3 +107,11 @@ let g:airline_powerline_fonts=1
 "" Stop the bufferline from duplicating the filenames
 let g:bufferline_echo = 0
 filetype indent plugin on     " required! 
+
+call plug#begin('~/.vim/plugged')
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'arcticicestudio/nord-vim'
+call plug#end()
+
+colorscheme solarized
