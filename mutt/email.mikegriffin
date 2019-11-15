@@ -39,6 +39,14 @@ mailboxes "+Inbox" \
           "+Uber" \
           "+iTunes" \
 
+set virtual_spoolfile=yes
+set nm_default_uri="notmuch:///Users/mike/Mail"
+virtual-mailboxes \
+  "Inbox" "notmuch://?query=to:*@mikegriffin.ie and path:mikegriffin/Inbox/**" \
+  "Today" "notmuch://?query=to:*@mikegriffin.ie and date:today" \
+  "MountainViews" "notmuch://?query=to:*@mikegriffin.ie and path:mikegriffin/MountainViews/**" \
+  "Archive" "notmuch://?query=to:*@mikegriffin.ie and path:mikegriffin/Archive/**" \
+
 macro index,pager y  "<save-message>+Archive<enter>"
 bind index,pager ! noop
 macro index,pager !  "<save-message>+Junk<tab><enter>"

@@ -6,9 +6,9 @@ set mbox      = "+Inbox"
 set spoolfile = "+Inbox"
 set timeout=360  #Check for mail every minute
 set mail_check=360
-set postponed       = "+Drafts"
-set record          = "+Sent"
-set trash           = "+Bin"
+set postponed       = "=Drafts"
+set record          = "=Sent"
+set trash           = "=Bin"
 set header_cache=~/.mutt-github-headercache
 
 set realname = "Mike Griffin"
@@ -30,8 +30,16 @@ mailboxes "+Inbox" \
           "+payslips" \
           "+suspended" \
 
-set nm_default_uri="notmuch:///Users/mike/Mail/github"
-virtual-mailboxes "My INBOX" "notmuch://?query=tag:inbox"
+set virtual_spoolfile=yes
+set nm_default_uri="notmuch:///Users/mike/Mail"
+virtual-mailboxes \
+  "Inbox" "notmuch://?query=folder:github/Inbox" \
+  "Today" "notmuch://?query=path:github/** and date:today" \
+  "New Tickets this week" "notmuch://?query=folder:/github\/new/ and date:7_days..today" \
+  "Notifications this week" "notmuch://?query=folder:github/notifications and date:7_days..today" \
+  "New Tickets" "notmuch://?query=folder:/github\/new/" \
+  "Notifications" "notmuch://?query=folder:github/notifications" \
+  "GHE.io" "notmuch://?query=folder:github/ghe_io" \
 # notmuch bindings
 macro index \\\\ "<vfolder-from-query>"
 
@@ -39,6 +47,6 @@ macro index O \
   "<shell-escape>notmuch new<enter>" \
   "Update the search index"
 
-macro index,pager y  "<save-message>+Archive<enter>"
+macro index,pager y  "<save-message>=Archive<enter>"
 bind index - collapse-thread
 bind index _ collapse-all

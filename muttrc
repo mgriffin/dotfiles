@@ -24,6 +24,7 @@ color sidebar_highlight white   color238
 bind index,pager <down>   sidebar-next
 bind index,pager <up>     sidebar-prev
 bind index,pager <right>  sidebar-open
+bind index,pager C change-vfolder
 
 # Status Bar -----------------------------------------
 set status_chars  = " *%A"
