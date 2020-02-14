@@ -16,6 +16,7 @@ alias ll='ls -alFG'
 alias sb='source ~/.bashrc'
 function msdate() { perl -e "print scalar localtime($1 / 1000) . \"\n\""; }
 
+### usage: $ t [ticket-id]
 function t() {
   mkdir -p ~/tickets/$1
   cd ~/tickets/$1
