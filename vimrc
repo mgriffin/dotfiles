@@ -71,6 +71,11 @@ set scrolloff=8
 set nolist " Display unprintable characters f12 - switches
 set listchars=tab:·\ ,eol:¶,trail:·,extends:»,precedes:« " Unprintable chars mapping
 
+set grepprg=ag\ --nogroup\ --column\ $*
+set grepformat=%f:%l:%c:%m
+" bind K to grep word under cursor
+noremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
 " Auto commands
 autocmd BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
 autocmd BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
