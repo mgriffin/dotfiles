@@ -16,6 +16,11 @@ alias ll='ls -alFG'
 alias sb='source ~/.bashrc'
 function msdate() { perl -e "print scalar localtime($1 / 1000) . \"\n\""; }
 
+function t() {
+  mkdir -p ~/tickets/$1
+  cd ~/tickets/$1
+}
+
 ### git aliases
 alias gf='git fetch'
 alias gm='git merge origin/master'
