@@ -22,6 +22,20 @@ function t() {
   cd ~/tickets/$1
 }
 
+function shadow() {
+convert "$1" \
+  \( -clone 0 -background gray -shadow 80x3+0+0 \) \
+  +swap -background none -layers merge "$1"
+}
+
+#smartresize() {
+#  mogrify -path $3 -filter Triangle -define filter:support=2 -thumbnail $2 -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 -define jpeg:fancy-upsampling=off -define png:compression-filter=5 -define png:compression-level=9 -define png:compression-strategy=1 -define png:exclude-chunk=all -interlace none -colorspace sRGB $1
+#}
+
+resize() {
+  convert $1 -resize "$2x$2>" $3/$1
+}
+
 ### git aliases
 alias gf='git fetch'
 alias gm='git merge origin/master'
@@ -30,6 +44,9 @@ alias gg='git grep'
 alias prune='git remote prune origin && git branch -vv | grep '\''origin/.*: gone]'\'' | awk '\''{print $1}'\'' | xargs git branch -d'
 
 alias snippet='cd ~/github/business-support/snippets && ./snippets.rb -u mgriffin -i Work "Speeling misteaks"'
+alias wiki='vim ~/mgriffin/words-of-wisdom/index.md'
+alias scratch='vim ~/mgriffin/words-of-wisdom/scratchpad.md'
+alias diary='vim ~/mgriffin/words-of-wisdom/diary/diary.md'
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2 | tr ' ' '\n')" scp sftp ssh
@@ -45,6 +62,9 @@ fi
 if command -v nodeenv >/dev/null; then
   eval "$(nodenv init -)"
 fi
+
+export PATH="/usr/local/opt/php@7.2/bin:$PATH"
+export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 
 ### history settings
 # set the history files to be much much bigger than the default
