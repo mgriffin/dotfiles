@@ -37,10 +37,14 @@ nnoremap <leader>f :GFiles<CR>
 nnoremap <leader>F :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 
-nnoremap <leader>d "=strftime("%Y-%m-%d")<cr>P
+nnoremap <leader>d "=strftime("%Y-%m-%d")<cr>p
+nnoremap <leader>ld :.!php -r 'echo date("jS F Y");'<cr>
 
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+
+nnoremap <leader>ww :edit ~/mgriffin/words-of-wisdom/scratchpad.md<cr>
+nnoremap <leader>wi :edit ~/mgriffin/words-of-wisdom/index.md<cr>
 
 "" Get rid of the arrow keys
 "" This is the big leagues now, better get used to it quick!
@@ -71,7 +75,7 @@ set scrolloff=8
 set nolist " Display unprintable characters f12 - switches
 set listchars=tab:·\ ,eol:¶,trail:·,extends:»,precedes:« " Unprintable chars mapping
 
-set grepprg=ag\ --nogroup\ --column\ $*
+set grepprg=/usr/local/bin/ag\ --nogroup\ --column\ $*
 set grepformat=%f:%l:%c:%m
 " bind K to grep word under cursor
 noremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
@@ -86,15 +90,6 @@ autocmd BufRead,BufNewFile {*.ldg,*.ledger} set ft=ledger
 autocmd BufRead,BufNewFile {.vimrc} set ft=vim
 autocmd BufRead,BufNewFile {*.coffee} set ft=javascript
 
-augroup filetype_php
-  autocmd!
-  autocmd FileType php setlocal sw=4 ts=4 sts=4
-augroup END
-augroup filetype_ruby
-  autocmd!
-  autocmd FileType ruby setlocal number
-  autocmd FileType ruby nnoremap <buffer> <leader>c I#<esc>
-augroup END
 augroup filetype_vim
   autocmd!
   autocmd FileType vim nnoremap <buffer> <leader>c I"<esc>
@@ -117,6 +112,7 @@ call plug#begin('~/.vim/plugged')
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'tpope/vim-surround'
 call plug#end()
 
-colorscheme solarized
+colorscheme nord
