@@ -43,9 +43,6 @@ nnoremap <leader>ld :.!php -r 'echo date("jS F Y");'<cr>
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-nnoremap <leader>ww :edit ~/mgriffin/words-of-wisdom/scratchpad.md<cr>
-nnoremap <leader>wi :edit ~/mgriffin/words-of-wisdom/index.md<cr>
-
 "" Get rid of the arrow keys
 "" This is the big leagues now, better get used to it quick!
 noremap <Up> <Nop>
