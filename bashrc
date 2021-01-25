@@ -38,15 +38,12 @@ resize() {
 
 ### git aliases
 alias gf='git fetch'
-alias gm='git merge origin/master'
+alias gm='git merge origin/$(git head)'
 alias gg='git grep'
 ### prune stale local branches
 alias prune='git remote prune origin && git branch -vv | grep '\''origin/.*: gone]'\'' | awk '\''{print $1}'\'' | xargs git branch -d'
 
 alias snippet='cd ~/github/business-support/snippets && ./snippets.rb -u mgriffin -i Work "Speeling misteaks"'
-alias wiki='vim ~/mgriffin/words-of-wisdom/index.md'
-alias scratch='vim ~/mgriffin/words-of-wisdom/scratchpad.md'
-alias diary='vim ~/mgriffin/words-of-wisdom/diary/diary.md'
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2 | tr ' ' '\n')" scp sftp ssh
@@ -83,9 +80,10 @@ shopt -s cmdhist
 # immediately write the command to history instead of waiting until the end of the session
 PROMPT_COMMAND='history -a'
 
-#set up hub if it's installed
-if command -v hub >/dev/null; then
-  eval "$(hub alias -s)"
-fi
+# set up hub if it's installed
+# diabled now that `gh` has been released as a client
+#if command -v hub >/dev/null; then
+#  eval "$(hub alias -s)"
+#fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

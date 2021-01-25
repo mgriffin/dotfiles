@@ -26,6 +26,7 @@
   lp = log -p
   sh = show --stat
   s = status -s
+  head = !git remote show origin | awk '/HEAD branch/ {print $NF}'
 [push]
 	default = simple
 [filter "media"]

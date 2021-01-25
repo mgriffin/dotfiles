@@ -33,7 +33,8 @@ set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)
 # Index View Options ---------------------------------
 set date_format = "%Y-%m-%d"
 set index_format = "[%Z]  %D  %-20.20F  %s"
-set sort = reverse-threads                         # like gmail
+##set sort = reverse-threads                         # like gmail
+set sort = threads                         # like gmail
 set sort_aux = last-date-received
 #set uncollapse_jump                        # don't collapse on an unread message
 set sort_re                                # thread based on regex

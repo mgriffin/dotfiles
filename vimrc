@@ -112,4 +112,10 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-surround'
 call plug#end()
 
+augroup nord-theme-overrides
+  autocmd!
+  " Use 'nord7' as foreground color for all comments.
+  autocmd ColorScheme nord highlight Comment ctermfg=14 guifg=#8FBCBB
+augroup END
+
 colorscheme nord
