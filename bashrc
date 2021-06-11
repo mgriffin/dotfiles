@@ -28,6 +28,10 @@ convert "$1" \
   +swap -background none -layers merge "$1"
 }
 
+function ggw() {
+  git grep -W "def $1"
+}
+
 #smartresize() {
 #  mogrify -path $3 -filter Triangle -define filter:support=2 -thumbnail $2 -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 -define jpeg:fancy-upsampling=off -define png:compression-filter=5 -define png:compression-level=9 -define png:compression-strategy=1 -define png:exclude-chunk=all -interlace none -colorspace sRGB $1
 #}
@@ -78,10 +82,11 @@ HISTIGNORE='ls:bg:fg:history'
 # make multiline commands fit on one line
 shopt -s cmdhist
 # immediately write the command to history instead of waiting until the end of the session
-PROMPT_COMMAND='history -a'
+### PROMPT_COMMAND='history -a'
+export PROMPT_COMMAND='history -a; if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%dT%H:%M:%S") $(pwd) $(history 1)" >> ~/mgriffin/words-of-wisdom/bash-history/$(date "+%Y-%m-%d").log; fi'
 
 # set up hub if it's installed
-# diabled now that `gh` has been released as a client
+# disabled now that `gh` has been released as a client
 #if command -v hub >/dev/null; then
 #  eval "$(hub alias -s)"
 #fi
