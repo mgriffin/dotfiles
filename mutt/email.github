@@ -28,6 +28,7 @@ mailboxes "+Inbox" \
           "+new tickets" \
           "+notifications" \
           "+payslips" \
+          "+Archive" \
 
 ### set virtual_spoolfile=yes
 ### set nm_default_uri="notmuch:///Users/mike/Mail"

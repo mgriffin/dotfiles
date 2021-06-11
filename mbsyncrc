@@ -15,15 +15,15 @@ Inbox ~/Mail/mikegriffin/Inbox
 Flatten .
 
 Channel mikegriffin-sent
-Master :mikegriffin-remote:"Sent Items"
-Slave :mikegriffin-local:Sent
+Far :mikegriffin-remote:"Sent Items"
+Near :mikegriffin-local:Sent
 Create Both
 Expunge Both
 SyncState *
 
 Channel mikegriffin
-Master :mikegriffin-remote:
-Slave :mikegriffin-local:
+Far :mikegriffin-remote:
+Near :mikegriffin-local:
 Patterns * !Sent
 Create Both
 Expunge Both
@@ -51,37 +51,37 @@ Flatten .
 SubFolders Legacy
 
 Channel github-all
-Master :github-remote:"[Gmail]/All Mail"
-Slave :github-local:Archive
+Far :github-remote:"[Gmail]/All Mail"
+Near :github-local:Archive
 Create Both
 Expunge Both
 SyncState *
 
 Channel github-sent
-Master :github-remote:"[Gmail]/Sent Mail"
-Slave :github-local:Sent
+Far :github-remote:"[Gmail]/Sent Mail"
+Near :github-local:Sent
 Create Both
 Expunge Both
 SyncState *
 
 Channel github-bin
-Master :github-remote:"[Gmail]/Bin"
-Slave :github-local:Bin
+Far :github-remote:"[Gmail]/Bin"
+Near :github-local:Bin
 Create Both
 Expunge Both
 SyncState *
 
 Channel github
-Master :github-remote:
-Slave :github-local:
+Far :github-remote:
+Near :github-local:
 Patterns * ![Gmail]* !ghe* !Sent !Archive !Bin
 Create Both
 Expunge Both
 SyncState *
 
 Channel github-ghe
-Master :github-remote:ghe.io
-Slave :github-local:ghe_io
+Far :github-remote:ghe.io
+Near :github-local:ghe_io
 Create Both
 Expunge Both
 SyncState *
