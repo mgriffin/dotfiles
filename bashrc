@@ -82,8 +82,11 @@ HISTIGNORE='ls:bg:fg:history'
 # make multiline commands fit on one line
 shopt -s cmdhist
 # immediately write the command to history instead of waiting until the end of the session
-### PROMPT_COMMAND='history -a'
-export PROMPT_COMMAND='history -a; if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%dT%H:%M:%S") $(pwd) $(history 1)" >> ~/mgriffin/words-of-wisdom/bash-history/$(date "+%Y-%m-%d").log; fi'
+export PROMPT_COMMAND='history -a'
+if [ -d ~/.logs ]; then
+  export PROMPT_COMMAND='history -a; if [ "$(id -u)" -ne 0 ]; then echo "$(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi'
+fi
+
 
 # set up hub if it's installed
 # disabled now that `gh` has been released as a client
