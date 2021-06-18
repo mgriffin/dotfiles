@@ -4,8 +4,6 @@
 	helper = osxkeychain
 [core]
   excludesfile = ~/.gitignore
-[hub]
-  protocol = https
 [color]
   diff = auto
   status = auto
@@ -29,18 +27,8 @@
   head = !git remote show origin | awk '/HEAD branch/ {print $NF}'
 [push]
 	default = simple
-[filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
-[filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	required = true
 	clean = git-lfs clean -- %f
 	process = git-lfs filter-process
-[commit]
-	gpgsign = true
