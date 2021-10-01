@@ -1,0 +1,63 @@
+### return a proper date from a timestamp with milliseconds
+function msdate() {
+  perl -e "print scalar localtime($1 / 1000) . \"\n\"";
+}
+
+### create a folder for working on a ticket and move there
+### usage: $ t [ticket-id]
+function t() {
+  mkdir -p ~/tickets/$1
+  cd ~/tickets/$1
+}
+
+### Add a shadow to a screenshot
+### usage: $ shadow ~/Desktop/ss1.png
+function shadow() {
+convert "$1" \
+  \( -clone 0 -background gray -shadow 80x3+0+0 \) \
+  +swap -background none -layers merge "$1"
+}
+
+### find and return a full definition
+function ggw() {
+  git grep -W "def $1"
+}
+
+#smartresize() {
+#  mogrify -path $3 -filter Triangle -define filter:support=2 -thumbnail $2 -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 -define jpeg:fancy-upsampling=off -define png:compression-filter=5 -define png:compression-level=9 -define png:compression-strategy=1 -define png:exclude-chunk=all -interlace none -colorspace sRGB $1
+#}
+
+### Resize an image
+### usage: $ resize ss1.png 100 thumbnail
+resize() {
+  convert $1 -resize "$2x$2>" $3/$1
+}
+
+### create a new note
+### usage: $ note this will be the title of the note and the filename
+note() {
+  vim "+NewZettel $*"
+}
+
+### fuzzy search through those notes, with a preview. Pressing enter will open the note in vim
+search_notes() {
+  local filename
+  local path=~/notes
+  filename=$(ag --nobreak --nonumbers --noheading . $path | fzf --delimiter=: --nth=2.. --reverse --prompt="TheHub > " --border --print-query --preview="bat --color=always --style=numbers {1}" --preview-window=down:50% --no-info | tail -1)
+
+  if [ -n "$filename" ]; then
+    vim "$(echo $filename | cut -f1 -d':')"
+  fi
+}
+
+### local fuzzy search for thehub
+### make sure to pull occasionally to keep the info up to date
+thehub() {
+  local filename
+  filename=$(find ~/github/thehub -type f | fzf --reverse --prompt="TheHub > " --border --print-query --preview="bat --color=always --style=numbers {+}" --preview-window=down:50% --inline-info | tail -1)
+
+  if [ -n "$filename" ]; then
+    open "https://thehub.github.com/$(echo $filename | cut -f7- -d'/' | sed 's/.md$//')"
+  fi
+}
+
