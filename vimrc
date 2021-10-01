@@ -113,7 +113,7 @@ set statusline+=\ %l:%c
 set statusline+=\ ››
 
 call plug#begin('~/.vim/plugged')
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-surround'
