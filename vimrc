@@ -126,3 +126,42 @@ augroup nord-theme-overrides
 augroup END
 
 colorscheme nord
+
+"" Zettelkasten
+func! Zettel(...)
+
+  " build the file name
+  let l:sep = ''
+  if len(a:000) > 0
+    let l:sep = '-'
+  endif
+  let l:fname = expand('~/notes/snippets/') . strftime("%Y%m%d%H%M") . l:sep . join(a:000, '-') . '.md'
+
+  " edit the new file
+  exec "e " . l:fname
+
+  " enter the title and timestamp in the new file
+  if len(a:000) > 0
+    exec "normal ggO---\<cr>date: \<c-r>=strftime('%Y-%m-%d')\<cr>\<cr>title: " . join(a:000) . "\<cr>---\<esc>G"
+  else
+    exec "normal ggO---\<cr>date: \<c-r>=strftime('%Y-%m-%d')\<cr>\<cr>---\<esc>G"
+  endif
+endfunc
+
+command! -nargs=* NewZettel call Zettel(<f-args>)
+nnoremap <leader>nz :NewZettel
+
+function! s:handleFZF(file)
+  " get a relative link to the file
+  let file = fnameescape(fnamemodify(a:file[0], ":p:."))
+  " :t gets the last part of any filename passed in, so just the file itself
+  " :r strips off the file extension
+  let filename = fnameescape(fnamemodify(a:file[0], ":t:r"))
+  return "[".filename."](".file.")"
+endfunction
+
+inoremap <expr> <c-l>a fzf#vim#complete(fzf#vim#with_preview({
+  \ 'source':  'ag -l --nocolor --markdown -g "" ~/notes',
+  \ 'reducer': function('<sid>handleFZF'),
+  \ 'options': '--multi --reverse --margin 15%,0',
+  \ 'up':    20}))
