@@ -14,7 +14,7 @@ for DOTFILE in *; do
   [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
   DIRFILE="$DOTFILESDIR/$DOTFILE"
 
-  echo $DOTFILE | egrep -q '(^script/$|\.txt$|\.md$)' && continue
+  echo $DOTFILE | egrep -q '(^Brew|^script/$|\.txt$|\.md$|\.sh$)' && continue
 
   # Don't install some files unless you're called michaelgriffin.
   if echo $USER | grep -vq 'michaelgriffin'
