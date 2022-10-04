@@ -2,7 +2,7 @@ txtgrn='\[\e[0;32m\]' # Green
 txtylw='\[\e[0;33m\]' # Yellow
 txtrst='\[\e[0m\]'    # Text Reset
 
-[ -f $HOME/.git-prompt ] && . $HOME/.git-prompt
+[[ -f $HOME/.git-prompt ]] && . $HOME/.git-prompt
 
 ### Set up a sane prompt
 ### [11:52:32] mike:~/.dotfiles (git_stuff) $
@@ -23,13 +23,16 @@ alias gg='git grep'
 ### prune stale local branches
 alias prune='git remote prune origin && git branch -vv | grep '\''origin/.*: gone]'\'' | awk '\''{print $1}'\'' | xargs git branch -d'
 
-# Add tab completion for SSH hostnames based on $HOME/.ssh/config, ignoring wildcards
-[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d " " -f2 | tr ' ' '\n')" scp sftp ssh
+### taskwarrior aliases
+alias in='task add +in'
 
-[ -f $HOME/.bashrc_functions ] && . $HOME/.bashrc_functions
+# Add tab completion for SSH hostnames based on $HOME/.ssh/config, ignoring wildcards
+[[ -e "$HOME/.ssh/config" ]] && complete -o "default" -o "nospace" -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d " " -f2 | tr ' ' '\n')" scp sftp ssh
+
+[[ -f $HOME/.bashrc_functions ]] && . $HOME/.bashrc_functions
 
 # Only run this if rbenv is installed
-if [ -d $HOME/.rbenv ]; then
+if [[ -d $HOME/.rbenv ]]; then
   PATH="$HOME/.rbenv/bin:$PATH"
 fi
 if command -v rbenv >/dev/null; then
@@ -39,7 +42,7 @@ if command -v nodeenv >/dev/null; then
   eval "$(nodenv init -)"
 fi
 
-if [ -d /usr/local/opt/php@7.2 ]; then
+if [[ -d /usr/local/opt/php@7.2 ]]; then
   PATH="/usr/local/opt/php@7.2/bin:/usr/local/opt/php@7.2/sbin:$PATH"
 fi
 export PATH="$HOME/bin:$PATH"
@@ -60,8 +63,12 @@ HISTIGNORE='ls:bg:fg:history'
 shopt -s cmdhist
 # immediately write the command to history instead of waiting until the end of the session
 export PROMPT_COMMAND='history -a'
-if [ -d $HOME/.logs ]; then
-  export PROMPT_COMMAND='history -a; if [ "$(id -u)" -ne 0 ]; then echo "$(pwd) $(history 1)" >> $HOME/.logs/bash-history-$(date "+%Y-%m-%d").log; fi'
+if [[ -d $HOME/.logs ]]; then
+  export PROMPT_COMMAND='history -a; if [[ "$(id -u)" -ne 0 ]]; then echo "$(pwd) $(history 1)" >> $HOME/.logs/bash-history-$(date "+%Y-%m-%d").log; fi'
 fi
 
-[ -f $HOME/.fzf.bash ] && source $HOME/.fzf.bash
+LESS="--quit-if-one-screen --RAW-CONTROL-CHARS"
+export LESS
+
+[[ -f $HOME/.fzf.bash ]] && source $HOME/.fzf.bash
+[[ -z GH_GH_PAT ]] && export GITHUB_TOKEN=$GH_GH_PAT
