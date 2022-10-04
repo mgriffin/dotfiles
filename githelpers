@@ -4,6 +4,7 @@ LOG_HASH="%C(always,yellow)%h%C(always,reset)"
 LOG_ABSOLUTE_DATE="%C(always,green)(%ar)%C(always,reset)"
 LOG_RELATIVE_TIME="%C(always,green)%as%C(always,reset)"
 LOG_AUTHOR="%C(always,blue)<%an>%C(always,reset)"
+LOG_AUTHOR_WITH_EMAIL="%C(always,blue)<%an - %ae>%C(always,reset)"
 LOG_SUBJECT="%s"
 LOG_REFS="%C(always,red)%d%C(always,reset)"
 
