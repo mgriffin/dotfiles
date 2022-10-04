@@ -76,6 +76,8 @@ set grepprg=/usr/local/bin/ag\ --nogroup\ --column\ $*
 set grepformat=%f:%l:%c:%m
 " bind K to grep word under cursor
 noremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+command! -bang -nargs=+ -complete=dir Rag call fzf#vim#ag_raw(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+noremap <leader>v :Rag '^(?=.)' ~/Dropbox/vimwiki/<return>
 
 " Auto commands
 autocmd BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
@@ -97,27 +99,56 @@ augroup filetype_javascript
   autocmd FileType javascript nnoremap <buffer> <leader>c I#<esc>
 augroup END
 
+function! StatuslineGit()
+    let l:branchname = GitBranch()
+      return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+    endfunction
+
 filetype indent plugin on     " required! 
 set statusline=
 set statusline+=\ %n
-set statusline+=\ ‹‹
 set statusline+=\ %f
-set statusline+=\ ››
+set statusline+=\ %r
 set statusline+=\ %m
-set statusline+=\ %F
+set statusline+=\ %B
 set statusline+=%=
 set statusline+=\ %{(&fenc!=''?&fenc:&enc)}
 set statusline+=\ %y
-set statusline+=\ ‹‹
+set statusline+=\ %p%%
 set statusline+=\ %l:%c
-set statusline+=\ ››
 
 call plug#begin('~/.vim/plugged')
+Plug 'arcticicestudio/nord-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'arcticicestudio/nord-vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'SidOfc/mkdx'
+Plug 'sirVer/ultisnips'
 Plug 'tpope/vim-surround'
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+Plug 'tools-life/taskwiki'
 call plug#end()
+
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.wiki',
+                      \ 'auto_diary_index': 1}]
+let g:vimwiki_ext2syntax = {'.wiki': 'markdown'}
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsListSnippets="<c-tab>"
+
+let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
+                        \ 'enter': { 'shift': 1 },
+                        \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
+                        \ 'fold': { 'enable': 0 } }
 
 augroup nord-theme-overrides
   autocmd!
@@ -127,41 +158,3 @@ augroup END
 
 colorscheme nord
 
-"" Zettelkasten
-func! Zettel(...)
-
-  " build the file name
-  let l:sep = ''
-  if len(a:000) > 0
-    let l:sep = '-'
-  endif
-  let l:fname = expand('~/notes/snippets/') . strftime("%Y%m%d%H%M") . l:sep . join(a:000, '-') . '.md'
-
-  " edit the new file
-  exec "e " . l:fname
-
-  " enter the title and timestamp in the new file
-  if len(a:000) > 0
-    exec "normal ggO---\<cr>date: \<c-r>=strftime('%Y-%m-%d')\<cr>\<cr>title: " . join(a:000) . "\<cr>---\<esc>G"
-  else
-    exec "normal ggO---\<cr>date: \<c-r>=strftime('%Y-%m-%d')\<cr>\<cr>---\<esc>G"
-  endif
-endfunc
-
-command! -nargs=* NewZettel call Zettel(<f-args>)
-nnoremap <leader>nz :NewZettel
-
-function! s:handleFZF(file)
-  " get a relative link to the file
-  let file = fnameescape(fnamemodify(a:file[0], ":p:."))
-  " :t gets the last part of any filename passed in, so just the file itself
-  " :r strips off the file extension
-  let filename = fnameescape(fnamemodify(a:file[0], ":t:r"))
-  return "[".filename."](".file.")"
-endfunction
-
-inoremap <expr> <c-l>a fzf#vim#complete(fzf#vim#with_preview({
-  \ 'source':  'ag -l --nocolor --markdown -g "" ~/notes',
-  \ 'reducer': function('<sid>handleFZF'),
-  \ 'options': '--multi --reverse --margin 15%,0',
-  \ 'up':    20}))
