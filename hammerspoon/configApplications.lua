@@ -7,8 +7,8 @@ return {
     bundleID = 'com.google.Chrome',
     hyperKey = 'c'
   },
-  ['com.spotify.client'] = {
-    bundleID = 'com.spotify.client',
+  ['com.apple.Music'] = {
+    bundleID = 'com.apple.Music',
     hyperKey = 'm'
   },
   ['com.obsproject.obs-studio'] = {

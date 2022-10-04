@@ -1,7 +1,7 @@
 hs.loadSpoon('ControlEscape'):start() -- Load Hammerspoon bits from https://github.com/jasonrudolph/ControlEscape.spoon
 hs.loadSpoon('Hyper')                 -- https://github.com/evantravers/Hyper.spoon
 
-local applescript = [[tell application "System Preferences"
+local toggle_bluetooth = [[tell application "System Preferences"
     reveal pane id "com.apple.preferences.Bluetooth"
     -- activate
 
@@ -42,8 +42,16 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
 end)
 hs.alert.show("🤘 Config loaded 🤘")
 
+-- toggle bluetooth and wifi for when I'm connected to the monitor
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "B", function()
-  hs.osascript.applescript(applescript)
+  hs.osascript.applescript(toggle_bluetooth)
+
+  local wifi_state = hs.wifi.interfaceDetails().power
+  if wifi_state then
+    hs.wifi.setPower(false)
+  else
+    hs.wifi.setPower(true)
+  end
 end)
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", function()
@@ -116,7 +124,7 @@ local laptopWindowLayout = {
 local bigWindowLayout = {
   {"Google Chrome",  nil, screenName, {x=0,   y=0, w=0.6, h=1}, nil, nil},
   {"Slack",          nil, screenName, {x=0.6, y=0, w=0.4, h=1}, nil, nil},
-  {"iTerm2",         nil, screenName, {x=0,   y=0, w=0.6, h=1}, nil, nil},
+  {"iTerm2",         nil, screenName, {x=0,   y=0, w=1,   h=1}, nil, nil},
   {"Atom",           nil, screenName, {x=0,   y=0, w=0.6, h=1}, nil, nil},
 }
 if screenName == "Built-in Retina Display" then
