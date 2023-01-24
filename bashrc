@@ -42,6 +42,12 @@ if command -v nodeenv >/dev/null; then
   eval "$(nodenv init -)"
 fi
 
+### set up paths properly in codespaces so that rbenv will work
+if [[ -d /home/linuxbrew/.linuxbrew/bin/ ]]; then
+  PATH="/home/linuxbrew/.linuxbrew/bin/:$HOME/.gem/bin:$PATH"
+  export GEM_HOME=$HOME/.gem/
+fi
+
 if [[ -d /usr/local/opt/php@7.2 ]]; then
   PATH="/usr/local/opt/php@7.2/bin:/usr/local/opt/php@7.2/sbin:$PATH"
 fi
