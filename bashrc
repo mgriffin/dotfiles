@@ -42,6 +42,10 @@ if command -v nodeenv >/dev/null; then
   eval "$(nodenv init -)"
 fi
 
+if [[ -d /opt/homebrew/bin/ ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 ### set up paths properly in codespaces so that rbenv will work
 if [[ -d /home/linuxbrew/.linuxbrew/bin/ ]]; then
   PATH="/home/linuxbrew/.linuxbrew/bin/:$HOME/.gem/bin:$PATH"
