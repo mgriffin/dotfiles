@@ -13,7 +13,7 @@ function t() {
 ### Add a shadow to a screenshot
 ### usage: $ shadow ~/Desktop/ss1.png
 function shadow() {
-convert "$1" \
+magick "$1" \
   \( -clone 0 -background gray -shadow 80x3+0+0 \) \
   +swap -background none -layers merge "$1"
 }
@@ -30,7 +30,7 @@ function ggw() {
 ### Resize an image
 ### usage: $ resize ss1.png 100 thumbnail
 resize() {
-  convert $1 -resize "$2x$2>" $3/$1
+  magick $1 -resize "$2x$2>" $3/$1
 }
 
 ### create a new note

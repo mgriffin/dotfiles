@@ -43,6 +43,10 @@ nnoremap <leader>ld :.!php -r 'echo date("jS F Y");'<cr>
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+" From https://tenderlovemaking.com/2016/02/05/i-am-a-puts-debuggerer/
+" puts the caller
+nnoremap <leader>wtf oputs "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
+
 "" Get rid of the arrow keys
 "" This is the big leagues now, better get used to it quick!
 noremap <Up> <Nop>
@@ -72,11 +76,11 @@ set scrolloff=8
 set nolist " Display unprintable characters f12 - switches
 set listchars=tab:·\ ,eol:¶,trail:·,extends:»,precedes:« " Unprintable chars mapping
 
-set grepprg=/usr/local/bin/ag\ --nogroup\ --column\ $*
+set grepprg=/opt/homebrew/bin/ag\ --nogroup\ --column\ $*
 set grepformat=%f:%l:%c:%m
 " bind K to grep word under cursor
 noremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-command! -bang -nargs=+ -complete=dir Rag call fzf#vim#ag_raw(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=+ -complete=dir Rag call fzf#vim#ag_raw(<q-args>, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 noremap <leader>v :Rag '^(?=.)' ~/Dropbox/vimwiki/<return>
 
 " Auto commands
@@ -122,17 +126,10 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'SidOfc/mkdx'
 Plug 'sirVer/ultisnips'
 Plug 'tpope/vim-surround'
-Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
-Plug 'tools-life/taskwiki'
+Plug 'mattn/vim-goimports'
 call plug#end()
-
-let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.wiki',
-                      \ 'auto_diary_index': 1}]
-let g:vimwiki_ext2syntax = {'.wiki': 'markdown'}
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -145,15 +142,11 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsListSnippets="<c-tab>"
 
-let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
-                        \ 'enter': { 'shift': 1 },
-                        \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
-                        \ 'fold': { 'enable': 0 } }
-
 augroup nord-theme-overrides
   autocmd!
   " Use 'nord7' as foreground color for all comments.
   autocmd ColorScheme nord highlight Comment ctermfg=14 guifg=#8FBCBB
+  autocmd ColorScheme nord highlight LineNr ctermfg=14 ctermbg=8 guifg=#8FBCBB guibg=#4C566A
 augroup END
 
 colorscheme nord

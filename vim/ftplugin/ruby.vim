@@ -87,7 +87,7 @@ function! RunTests(filename)
       if filereadable("bin/rails")
         exec ":!bin/rails test " . a:filename
       else
-        exec ":!ruby " . a:filename
+        exec ":!bundle exec ruby " . a:filename
       end
     end
 endfunction

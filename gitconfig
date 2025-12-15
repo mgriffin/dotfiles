@@ -1,7 +1,7 @@
 [include]
   path = ~/.gitconfig-user
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 [core]
   excludesfile = ~/.gitignore
 [color]
@@ -25,6 +25,7 @@
   sh = show --stat
   s = status -s
   head = !git remote show origin | awk '/HEAD branch/ {print $NF}'
+  current = branch --show-current
 
   # Fancy logging
   # from destroyallsoftware
@@ -41,11 +42,15 @@
   b = "!. ~/.githelpers && pretty_git_branch"
   bs = "!. ~/.githelpers && pretty_git_branch_sorted"
 [push]
-	default = simple
+  default = simple
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	required = true
-	clean = git-lfs clean -- %f
-	process = git-lfs filter-process
+  smudge = git-lfs smudge -- %f
+  required = true
+  clean = git-lfs clean -- %f
+  process = git-lfs filter-process
 [init]
-	defaultBranch = main
+  defaultBranch = main
+[user]
+  signingkey = 34F05605AE302880
+[commit]
+  gpgsign = true

@@ -7,6 +7,10 @@ return {
     bundleID = 'com.google.Chrome',
     hyperKey = 'c'
   },
+  ['org.mozilla.firefox'] = {
+    bundleID = 'org.mozilla.firefox',
+    hyperKey = 'f'
+  },
   ['com.apple.Music'] = {
     bundleID = 'com.apple.Music',
     hyperKey = 'm'

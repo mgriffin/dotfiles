@@ -1,6 +1,8 @@
 hs.loadSpoon('ControlEscape'):start() -- Load Hammerspoon bits from https://github.com/jasonrudolph/ControlEscape.spoon
 hs.loadSpoon('Hyper')                 -- https://github.com/evantravers/Hyper.spoon
 
+local browser = "firefox"
+
 local toggle_bluetooth = [[tell application "System Preferences"
     reveal pane id "com.apple.preferences.Bluetooth"
     -- activate
@@ -116,19 +118,20 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "F", function()
 end)
 local screenName = hs.screen.allScreens()[1]:name()
 local laptopWindowLayout = {
-  {"Google Chrome",  nil, screenName, hs.layout.maximized, nil, nil},
+  {"Firefox",        nil, screenName, hs.layout.maximized, nil, nil},
   {"Slack",          nil, screenName, hs.layout.maximized, nil, nil},
   {"iTerm2",         nil, screenName, hs.layout.maximized, nil, nil},
-  {"Atom",           nil, screenName, hs.layout.maximized, nil, nil},
+  {"WezTerm",        nil, screenName, hs.layout.maximized, nil, nil},
 }
 local bigWindowLayout = {
-  {"Google Chrome",  nil, screenName, {x=0,   y=0, w=0.6, h=1}, nil, nil},
+  {"Firefox",        nil, screenName, {x=0,   y=0, w=0.6, h=1}, nil, nil},
   {"Slack",          nil, screenName, {x=0.6, y=0, w=0.4, h=1}, nil, nil},
   {"iTerm2",         nil, screenName, {x=0,   y=0, w=1,   h=1}, nil, nil},
-  {"Atom",           nil, screenName, {x=0,   y=0, w=0.6, h=1}, nil, nil},
+  {"WezTerm",        nil, screenName, {x=0,   y=0, w=1,   h=1}, nil, nil},
 }
 if screenName == "Built-in Retina Display" then
   hs.layout.apply(laptopWindowLayout)
-elseif screenName == "Thunderbolt Display" then
+elseif (screenName == "Thunderbolt Display") or (screenName == "LEN T32h-20") then
   hs.layout.apply(bigWindowLayout)
 end
+

@@ -1,0 +1,41 @@
+snippet bang
+#!/usr/bin/env ruby
+
+endsnippet
+
+snippet frozen
+# frozen_string_literal: true
+
+endsnippet
+
+snippet hash
+p "#" * 60
+endsnippet
+
+snippet model
+class $1 < ApplicationRecord
+  $0
+end
+endsnippet
+
+snippet modeltest
+require "test_helper"
+
+class $1Test < ActiveSupport::TestCase
+  $0
+end
+endsnippet
+
+snippet controller
+class $1Controller < ApplicationController
+  $0
+end
+endsnippet
+
+snippet controllertest
+require "test_helper"
+
+class $1ControllerTest < ActionDispatch::IntegrationTest
+  $0
+end
+endsnippet
