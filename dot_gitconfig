@@ -6,6 +6,7 @@
   helper = osxkeychain
 [core]
   excludesfile = ~/.gitignore
+  ignorecase = false
 [color]
   diff = auto
   status = auto
