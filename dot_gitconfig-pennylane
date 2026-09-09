@@ -1,0 +1,8 @@
+[user]
+  name = Mike Griffin
+  email = mike.griffin@pennylane.com
+  signingkey = /Users/mike.griffin/.ssh/id_ed25519.pub
+[commit]
+  gpgsign = true
+[gpg]
+  format = ssh

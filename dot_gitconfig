@@ -1,5 +1,7 @@
 [include]
   path = ~/.gitconfig-user
+[includeIf "hasconfig:remote.*.url:git@github.com:pennylane-hq/**"]
+    path = ~/.gitconfig-pennylane
 [credential]
   helper = osxkeychain
 [core]
@@ -50,7 +52,3 @@
   process = git-lfs filter-process
 [init]
   defaultBranch = main
-[user]
-  signingkey = 34F05605AE302880
-[commit]
-  gpgsign = true

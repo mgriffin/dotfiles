@@ -23,9 +23,6 @@ alias gg='git grep'
 ### prune stale local branches
 alias prune='git remote prune origin && git branch -vv | grep '\''origin/.*: gone]'\'' | awk '\''{print $1}'\'' | xargs git branch -d'
 
-### taskwarrior aliases
-alias in='task add +in'
-
 # Add tab completion for SSH hostnames based on $HOME/.ssh/config, ignoring wildcards
 [[ -e "$HOME/.ssh/config" ]] && complete -o "default" -o "nospace" -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d " " -f2 | tr ' ' '\n')" scp sftp ssh
 
@@ -46,15 +43,6 @@ if [[ -d /opt/homebrew/bin/ ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-### set up paths properly in codespaces so that rbenv will work
-if [[ -d /home/linuxbrew/.linuxbrew/bin/ ]]; then
-  PATH="/home/linuxbrew/.linuxbrew/bin/:$HOME/.gem/bin:$PATH"
-  export GEM_HOME=$HOME/.gem/
-fi
-
-if [[ -d /usr/local/opt/php@7.2 ]]; then
-  PATH="/usr/local/opt/php@7.2/bin:/usr/local/opt/php@7.2/sbin:$PATH"
-fi
 export PATH="$HOME/bin:$PATH"
 
 ### history settings
@@ -81,4 +69,3 @@ LESS="--quit-if-one-screen --RAW-CONTROL-CHARS"
 export LESS
 
 [[ -f $HOME/.fzf.bash ]] && source $HOME/.fzf.bash
-[[ -z GH_GH_PAT ]] && export GITHUB_TOKEN=$GH_GH_PAT
