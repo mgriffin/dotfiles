@@ -1,0 +1,5 @@
+[user]
+  name = Mike Griffin
+  email = github@mikegriffin.ie
+[commit]
+  gpgsign = false
