@@ -1,13 +1,8 @@
 ackrc
 bash_profile
-bashrc
-bashrc_functions
 Brewfile
 config
 gemrc
-git-prompt
-gitconfig
-gitconfig-user
 githelpers
 gitignore
 hammerspoon
