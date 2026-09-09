@@ -43,6 +43,10 @@ if [[ -d /opt/homebrew/bin/ ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+if [[ -d $HOME/.asdf/ ]]; then
+  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+fi
+
 export PATH="$HOME/bin:$PATH"
 
 ### history settings
