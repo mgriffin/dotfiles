@@ -142,12 +142,12 @@ nmap ga <Plug>(EasyAlign)
 " let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " let g:UltiSnipsListSnippets="<c-tab>"
 
-" augroup nord-theme-overrides
-"   autocmd!
-"   " Use 'nord7' as foreground color for all comments.
-"   autocmd ColorScheme nord highlight Comment ctermfg=14 guifg=#8FBCBB
-"   autocmd ColorScheme nord highlight LineNr ctermfg=14 ctermbg=8 guifg=#8FBCBB guibg=#4C566A
-" augroup END
+augroup nord-theme-overrides
+  autocmd!
+  " Use 'nord7' as foreground color for all comments.
+  autocmd ColorScheme nord highlight Comment ctermfg=14 guifg=#8FBCBB
+  autocmd ColorScheme nord highlight LineNr ctermfg=14 ctermbg=8 guifg=#8FBCBB guibg=#4C566A
+augroup END
 
-" colorscheme nord
+colorscheme nord
 
