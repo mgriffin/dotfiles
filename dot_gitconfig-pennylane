@@ -8,3 +8,5 @@
   gpgsign = true
 [gpg]
   format = ssh
+[core]
+  ignorecase = false
