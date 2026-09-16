@@ -8,6 +8,10 @@ set t_Co=256 " needed to tell the colorscheme that we can use the good colours
 set hidden " to allow buffers to be hidden with pending changes
 set encoding=utf-8
 
+" to stop typescript from hanging, set this here and modify it in
+" ~/.vim/ftplugin/typescript.vim so that it uses the older regex engine
+set regexpengine=0
+
 set pastetoggle=<F10> "  toggle between paste and normal: for 'safer' pasting from keyboard
 " Match and search
 set hlsearch " highlight search
