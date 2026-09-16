@@ -15,11 +15,14 @@ export EDITOR=vim
 alias l='ls -lFG'
 alias ll='ls -alFG'
 alias sb='source $HOME/.bashrc'
+alias cm='chezmoi'
 
 ### git aliases
 alias gf='git fetch'
 alias gm='git merge origin/$(git head)'
 alias gg='git grep'
+alias stapu='git stash push -u'
+alias stapo='git stash pop'
 ### prune stale local branches
 alias prune='git remote prune origin && git branch -vv | grep '\''origin/.*: gone]'\'' | awk '\''{print $1}'\'' | xargs git branch -d'
 
@@ -44,9 +47,13 @@ if [[ -d /opt/homebrew/bin/ ]]; then
 fi
 
 if [[ -d $HOME/.asdf/ ]]; then
-  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+  PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 fi
 
+PATH="$(brew --prefix)/opt/grep/libexec/gnubin:$PATH"
+PATH="$(brew --prefix)/opt/findutils/libexec/gnubin:$PATH"
+PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
+PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 ### history settings
